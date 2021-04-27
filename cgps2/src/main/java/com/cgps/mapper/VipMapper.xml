@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.VipMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.Vip">
+    <!--@mbg.generated-->
+    <!--@Table vip-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="money" jdbcType="VARCHAR" property="money" />
+    <result column="cumulative_integral" jdbcType="INTEGER" property="cumulativeIntegral" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+    <result column="recommended" jdbcType="INTEGER" property="recommended" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="vip_time" jdbcType="TIMESTAMP" property="vipTime" />
+    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+    <result column="buy_number" jdbcType="INTEGER" property="buyNumber" />
+    <result column="cumulative_consumption" jdbcType="INTEGER" property="cumulativeConsumption" />
+    <result column="rc_id" jdbcType="INTEGER" property="rcId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="grouping_id" jdbcType="INTEGER" property="groupingId" />
+    <result column="label_id" jdbcType="INTEGER" property="labelId" />
+    <result column="grade_id" jdbcType="INTEGER" property="gradeId" />
+    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="recommend_id" jdbcType="INTEGER" property="recommendId" />
+    <result column="vipcard_id" jdbcType="VARCHAR" property="vipcardId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, phone, money, cumulative_integral, account, create_time, sex, address, 
+    head_portrait, recommended, `password`, vip_time, last_login, buy_number, cumulative_consumption, 
+    rc_id, type_id, grouping_id, label_id, grade_id, state_id, recommend_id, vipcard_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from vip
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from vip
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.Vip" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip (`name`, phone, money, 
+      cumulative_integral, account, create_time, 
+      sex, address, head_portrait, 
+      recommended, `password`, vip_time, 
+      last_login, buy_number, cumulative_consumption, 
+      rc_id, type_id, grouping_id, 
+      label_id, grade_id, state_id, 
+      recommend_id, vipcard_id)
+    values (#{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{money,jdbcType=VARCHAR}, 
+      #{cumulativeIntegral,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{headPortrait,jdbcType=VARCHAR}, 
+      #{recommended,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{vipTime,jdbcType=TIMESTAMP}, 
+      #{lastLogin,jdbcType=TIMESTAMP}, #{buyNumber,jdbcType=INTEGER}, #{cumulativeConsumption,jdbcType=INTEGER}, 
+      #{rcId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{groupingId,jdbcType=INTEGER}, 
+      #{labelId,jdbcType=INTEGER}, #{gradeId,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}, 
+      #{recommendId,jdbcType=INTEGER}, #{vipcardId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.Vip" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="cumulativeIntegral != null">
+        cumulative_integral,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="headPortrait != null">
+        head_portrait,
+      </if>
+      <if test="recommended != null">
+        recommended,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="vipTime != null">
+        vip_time,
+      </if>
+      <if test="lastLogin != null">
+        last_login,
+      </if>
+      <if test="buyNumber != null">
+        buy_number,
+      </if>
+      <if test="cumulativeConsumption != null">
+        cumulative_consumption,
+      </if>
+      <if test="rcId != null">
+        rc_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="groupingId != null">
+        grouping_id,
+      </if>
+      <if test="labelId != null">
+        label_id,
+      </if>
+      <if test="gradeId != null">
+        grade_id,
+      </if>
+      <if test="stateId != null">
+        state_id,
+      </if>
+      <if test="recommendId != null">
+        recommend_id,
+      </if>
+      <if test="vipcardId != null">
+        vipcard_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="cumulativeIntegral != null">
+        #{cumulativeIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="recommended != null">
+        #{recommended,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="vipTime != null">
+        #{vipTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogin != null">
+        #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyNumber != null">
+        #{buyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cumulativeConsumption != null">
+        #{cumulativeConsumption,jdbcType=INTEGER},
+      </if>
+      <if test="rcId != null">
+        #{rcId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="groupingId != null">
+        #{groupingId,jdbcType=INTEGER},
+      </if>
+      <if test="labelId != null">
+        #{labelId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendId != null">
+        #{recommendId,jdbcType=INTEGER},
+      </if>
+      <if test="vipcardId != null">
+        #{vipcardId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.Vip">
+    <!--@mbg.generated-->
+    update vip
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=VARCHAR},
+      </if>
+      <if test="cumulativeIntegral != null">
+        cumulative_integral = #{cumulativeIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="recommended != null">
+        recommended = #{recommended,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="vipTime != null">
+        vip_time = #{vipTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLogin != null">
+        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyNumber != null">
+        buy_number = #{buyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cumulativeConsumption != null">
+        cumulative_consumption = #{cumulativeConsumption,jdbcType=INTEGER},
+      </if>
+      <if test="rcId != null">
+        rc_id = #{rcId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="groupingId != null">
+        grouping_id = #{groupingId,jdbcType=INTEGER},
+      </if>
+      <if test="labelId != null">
+        label_id = #{labelId,jdbcType=INTEGER},
+      </if>
+      <if test="gradeId != null">
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        state_id = #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendId != null">
+        recommend_id = #{recommendId,jdbcType=INTEGER},
+      </if>
+      <if test="vipcardId != null">
+        vipcard_id = #{vipcardId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.Vip">
+    <!--@mbg.generated-->
+    update vip
+    set `name` = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      money = #{money,jdbcType=VARCHAR},
+      cumulative_integral = #{cumulativeIntegral,jdbcType=INTEGER},
+      account = #{account,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      recommended = #{recommended,jdbcType=INTEGER},
+      `password` = #{password,jdbcType=VARCHAR},
+      vip_time = #{vipTime,jdbcType=TIMESTAMP},
+      last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      buy_number = #{buyNumber,jdbcType=INTEGER},
+      cumulative_consumption = #{cumulativeConsumption,jdbcType=INTEGER},
+      rc_id = #{rcId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      grouping_id = #{groupingId,jdbcType=INTEGER},
+      label_id = #{labelId,jdbcType=INTEGER},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      state_id = #{stateId,jdbcType=INTEGER},
+      recommend_id = #{recommendId,jdbcType=INTEGER},
+      vipcard_id = #{vipcardId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getVipQuantity" parameterType="int" resultType="int">
+    select count(1) from vip
+    where DATE_SUB(CURDATE(), INTERVAL #{day} DAY) &lt;= date(create_time)
+  </select>
+</mapper>

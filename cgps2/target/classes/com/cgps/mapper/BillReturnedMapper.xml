@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.BillReturnedMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.BillReturned">
+    <!--@mbg.generated-->
+    <!--@Table bill_returned-->
+    <id column="returned_id" jdbcType="INTEGER" property="returnedId" />
+    <result column="returned_code" jdbcType="VARCHAR" property="returnedCode" />
+    <result column="returned_time" jdbcType="TIMESTAMP" property="returnedTime" />
+    <result column="returned_cause" jdbcType="VARCHAR" property="returnedCause" />
+    <result column="auditing_time" jdbcType="TIMESTAMP" property="auditingTime" />
+    <result column="settle_time" jdbcType="TIMESTAMP" property="settleTime" />
+    <result column="audit_method" jdbcType="VARCHAR" property="auditMethod" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="bill_code" jdbcType="INTEGER" property="billCode" />
+    <result column="retype_id" jdbcType="INTEGER" property="retypeId" />
+    <result column="restate_id" jdbcType="INTEGER" property="restateId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    returned_id, returned_code, returned_time, returned_cause, auditing_time, settle_time, 
+    audit_method, remark, bill_code, retype_id, restate_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from bill_returned
+    where returned_id = #{returnedId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from bill_returned
+    where returned_id = #{returnedId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="returned_id" keyProperty="returnedId" parameterType="com.cgps.pojo.BillReturned" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bill_returned (returned_code, returned_time, returned_cause, 
+      auditing_time, settle_time, audit_method, 
+      remark, bill_code, retype_id, 
+      restate_id)
+    values (#{returnedCode,jdbcType=VARCHAR}, #{returnedTime,jdbcType=TIMESTAMP}, #{returnedCause,jdbcType=VARCHAR}, 
+      #{auditingTime,jdbcType=TIMESTAMP}, #{settleTime,jdbcType=TIMESTAMP}, #{auditMethod,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{billCode,jdbcType=INTEGER}, #{retypeId,jdbcType=INTEGER}, 
+      #{restateId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="returned_id" keyProperty="returnedId" parameterType="com.cgps.pojo.BillReturned" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bill_returned
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="returnedCode != null">
+        returned_code,
+      </if>
+      <if test="returnedTime != null">
+        returned_time,
+      </if>
+      <if test="returnedCause != null">
+        returned_cause,
+      </if>
+      <if test="auditingTime != null">
+        auditing_time,
+      </if>
+      <if test="settleTime != null">
+        settle_time,
+      </if>
+      <if test="auditMethod != null">
+        audit_method,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="billCode != null">
+        bill_code,
+      </if>
+      <if test="retypeId != null">
+        retype_id,
+      </if>
+      <if test="restateId != null">
+        restate_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="returnedCode != null">
+        #{returnedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnedTime != null">
+        #{returnedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnedCause != null">
+        #{returnedCause,jdbcType=VARCHAR},
+      </if>
+      <if test="auditingTime != null">
+        #{auditingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleTime != null">
+        #{settleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditMethod != null">
+        #{auditMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=INTEGER},
+      </if>
+      <if test="retypeId != null">
+        #{retypeId,jdbcType=INTEGER},
+      </if>
+      <if test="restateId != null">
+        #{restateId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.BillReturned">
+    <!--@mbg.generated-->
+    update bill_returned
+    <set>
+      <if test="returnedCode != null">
+        returned_code = #{returnedCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnedTime != null">
+        returned_time = #{returnedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnedCause != null">
+        returned_cause = #{returnedCause,jdbcType=VARCHAR},
+      </if>
+      <if test="auditingTime != null">
+        auditing_time = #{auditingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="settleTime != null">
+        settle_time = #{settleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditMethod != null">
+        audit_method = #{auditMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null">
+        bill_code = #{billCode,jdbcType=INTEGER},
+      </if>
+      <if test="retypeId != null">
+        retype_id = #{retypeId,jdbcType=INTEGER},
+      </if>
+      <if test="restateId != null">
+        restate_id = #{restateId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where returned_id = #{returnedId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.BillReturned">
+    <!--@mbg.generated-->
+    update bill_returned
+    set returned_code = #{returnedCode,jdbcType=VARCHAR},
+      returned_time = #{returnedTime,jdbcType=TIMESTAMP},
+      returned_cause = #{returnedCause,jdbcType=VARCHAR},
+      auditing_time = #{auditingTime,jdbcType=TIMESTAMP},
+      settle_time = #{settleTime,jdbcType=TIMESTAMP},
+      audit_method = #{auditMethod,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      bill_code = #{billCode,jdbcType=INTEGER},
+      retype_id = #{retypeId,jdbcType=INTEGER},
+      restate_id = #{restateId,jdbcType=INTEGER}
+    where returned_id = #{returnedId,jdbcType=INTEGER}
+  </update>
+</mapper>

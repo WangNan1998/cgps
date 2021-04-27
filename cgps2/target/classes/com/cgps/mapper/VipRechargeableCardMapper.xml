@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.VipRechargeableCardMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.VipRechargeableCard">
+    <!--@mbg.generated-->
+    <!--@Table vip_rechargeable_card-->
+    <id column="card_id" jdbcType="INTEGER" property="cardId" />
+    <result column="batch_no" jdbcType="INTEGER" property="batchNo" />
+    <result column="card_name" jdbcType="VARCHAR" property="cardName" />
+    <result column="batch_money" jdbcType="DOUBLE" property="batchMoney" />
+    <result column="batch_number" jdbcType="INTEGER" property="batchNumber" />
+    <result column="use_money" jdbcType="DOUBLE" property="useMoney" />
+    <result column="use_number" jdbcType="INTEGER" property="useNumber" />
+    <result column="cancel_money" jdbcType="DOUBLE" property="cancelMoney" />
+    <result column="cancel_number" jdbcType="INTEGER" property="cancelNumber" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    card_id, batch_no, card_name, batch_money, batch_number, use_money, use_number, cancel_money, 
+    cancel_number, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from vip_rechargeable_card
+    where card_id = #{cardId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from vip_rechargeable_card
+    where card_id = #{cardId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="card_id" keyProperty="cardId" parameterType="com.cgps.pojo.VipRechargeableCard" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_rechargeable_card (batch_no, card_name, batch_money, 
+      batch_number, use_money, use_number, 
+      cancel_money, cancel_number, create_time
+      )
+    values (#{batchNo,jdbcType=INTEGER}, #{cardName,jdbcType=VARCHAR}, #{batchMoney,jdbcType=DOUBLE}, 
+      #{batchNumber,jdbcType=INTEGER}, #{useMoney,jdbcType=DOUBLE}, #{useNumber,jdbcType=INTEGER}, 
+      #{cancelMoney,jdbcType=DOUBLE}, #{cancelNumber,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="card_id" keyProperty="cardId" parameterType="com.cgps.pojo.VipRechargeableCard" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_rechargeable_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="batchNo != null">
+        batch_no,
+      </if>
+      <if test="cardName != null">
+        card_name,
+      </if>
+      <if test="batchMoney != null">
+        batch_money,
+      </if>
+      <if test="batchNumber != null">
+        batch_number,
+      </if>
+      <if test="useMoney != null">
+        use_money,
+      </if>
+      <if test="useNumber != null">
+        use_number,
+      </if>
+      <if test="cancelMoney != null">
+        cancel_money,
+      </if>
+      <if test="cancelNumber != null">
+        cancel_number,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=INTEGER},
+      </if>
+      <if test="cardName != null">
+        #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="batchMoney != null">
+        #{batchMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="batchNumber != null">
+        #{batchNumber,jdbcType=INTEGER},
+      </if>
+      <if test="useMoney != null">
+        #{useMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="useNumber != null">
+        #{useNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cancelMoney != null">
+        #{cancelMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cancelNumber != null">
+        #{cancelNumber,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.VipRechargeableCard">
+    <!--@mbg.generated-->
+    update vip_rechargeable_card
+    <set>
+      <if test="batchNo != null">
+        batch_no = #{batchNo,jdbcType=INTEGER},
+      </if>
+      <if test="cardName != null">
+        card_name = #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="batchMoney != null">
+        batch_money = #{batchMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="batchNumber != null">
+        batch_number = #{batchNumber,jdbcType=INTEGER},
+      </if>
+      <if test="useMoney != null">
+        use_money = #{useMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="useNumber != null">
+        use_number = #{useNumber,jdbcType=INTEGER},
+      </if>
+      <if test="cancelMoney != null">
+        cancel_money = #{cancelMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cancelNumber != null">
+        cancel_number = #{cancelNumber,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where card_id = #{cardId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.VipRechargeableCard">
+    <!--@mbg.generated-->
+    update vip_rechargeable_card
+    set batch_no = #{batchNo,jdbcType=INTEGER},
+      card_name = #{cardName,jdbcType=VARCHAR},
+      batch_money = #{batchMoney,jdbcType=DOUBLE},
+      batch_number = #{batchNumber,jdbcType=INTEGER},
+      use_money = #{useMoney,jdbcType=DOUBLE},
+      use_number = #{useNumber,jdbcType=INTEGER},
+      cancel_money = #{cancelMoney,jdbcType=DOUBLE},
+      cancel_number = #{cancelNumber,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where card_id = #{cardId,jdbcType=INTEGER}
+  </update>
+</mapper>

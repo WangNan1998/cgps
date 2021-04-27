@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.RcMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.Rc">
+    <!--@mbg.generated-->
+    <!--@Table rc-->
+    <id column="rc_id" jdbcType="INTEGER" property="rcId" />
+    <result column="rc_code" jdbcType="VARCHAR" property="rcCode" />
+    <result column="rc_phone" jdbcType="VARCHAR" property="rcPhone" />
+    <result column="rc_sex" jdbcType="VARCHAR" property="rcSex" />
+    <result column="rc_address" jdbcType="VARCHAR" property="rcAddress" />
+    <result column="rc_name" jdbcType="VARCHAR" property="rcName" />
+    <result column="rc_password" jdbcType="VARCHAR" property="rcPassword" />
+    <result column="community_name" jdbcType="VARCHAR" property="communityName" />
+    <result column="community_address" jdbcType="VARCHAR" property="communityAddress" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="buy_time" jdbcType="TIMESTAMP" property="buyTime" />
+    <result column="buy_number" jdbcType="INTEGER" property="buyNumber" />
+    <result column="buy_money" jdbcType="DOUBLE" property="buyMoney" />
+    <result column="tui_moneu" jdbcType="DOUBLE" property="tuiMoneu" />
+    <result column="grade_id" jdbcType="INTEGER" property="gradeId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="recommend_id" jdbcType="INTEGER" property="recommendId" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    rc_id, rc_code, rc_phone, rc_sex, rc_address, rc_name, rc_password, community_name, 
+    community_address, create_time, buy_time, buy_number, buy_money, tui_moneu, grade_id, 
+    type_id, state_id, recommend_id, area_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from rc
+    where rc_id = #{rcId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from rc
+    where rc_id = #{rcId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="rc_id" keyProperty="rcId" parameterType="com.cgps.pojo.Rc" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into rc (rc_code, rc_phone, rc_sex, 
+      rc_address, rc_name, rc_password, 
+      community_name, community_address, create_time, 
+      buy_time, buy_number, buy_money, 
+      tui_moneu, grade_id, type_id, 
+      state_id, recommend_id, area_id
+      )
+    values (#{rcCode,jdbcType=VARCHAR}, #{rcPhone,jdbcType=VARCHAR}, #{rcSex,jdbcType=VARCHAR}, 
+      #{rcAddress,jdbcType=VARCHAR}, #{rcName,jdbcType=VARCHAR}, #{rcPassword,jdbcType=VARCHAR}, 
+      #{communityName,jdbcType=VARCHAR}, #{communityAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{buyTime,jdbcType=TIMESTAMP}, #{buyNumber,jdbcType=INTEGER}, #{buyMoney,jdbcType=DOUBLE}, 
+      #{tuiMoneu,jdbcType=DOUBLE}, #{gradeId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, 
+      #{stateId,jdbcType=INTEGER}, #{recommendId,jdbcType=INTEGER}, #{areaId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="rc_id" keyProperty="rcId" parameterType="com.cgps.pojo.Rc" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into rc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rcCode != null">
+        rc_code,
+      </if>
+      <if test="rcPhone != null">
+        rc_phone,
+      </if>
+      <if test="rcSex != null">
+        rc_sex,
+      </if>
+      <if test="rcAddress != null">
+        rc_address,
+      </if>
+      <if test="rcName != null">
+        rc_name,
+      </if>
+      <if test="rcPassword != null">
+        rc_password,
+      </if>
+      <if test="communityName != null">
+        community_name,
+      </if>
+      <if test="communityAddress != null">
+        community_address,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="buyTime != null">
+        buy_time,
+      </if>
+      <if test="buyNumber != null">
+        buy_number,
+      </if>
+      <if test="buyMoney != null">
+        buy_money,
+      </if>
+      <if test="tuiMoneu != null">
+        tui_moneu,
+      </if>
+      <if test="gradeId != null">
+        grade_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="stateId != null">
+        state_id,
+      </if>
+      <if test="recommendId != null">
+        recommend_id,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rcCode != null">
+        #{rcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rcPhone != null">
+        #{rcPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="rcSex != null">
+        #{rcSex,jdbcType=VARCHAR},
+      </if>
+      <if test="rcAddress != null">
+        #{rcAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="rcName != null">
+        #{rcName,jdbcType=VARCHAR},
+      </if>
+      <if test="rcPassword != null">
+        #{rcPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="communityName != null">
+        #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="communityAddress != null">
+        #{communityAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyTime != null">
+        #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyNumber != null">
+        #{buyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="buyMoney != null">
+        #{buyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tuiMoneu != null">
+        #{tuiMoneu,jdbcType=DOUBLE},
+      </if>
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendId != null">
+        #{recommendId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.Rc">
+    <!--@mbg.generated-->
+    update rc
+    <set>
+      <if test="rcCode != null">
+        rc_code = #{rcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rcPhone != null">
+        rc_phone = #{rcPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="rcSex != null">
+        rc_sex = #{rcSex,jdbcType=VARCHAR},
+      </if>
+      <if test="rcAddress != null">
+        rc_address = #{rcAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="rcName != null">
+        rc_name = #{rcName,jdbcType=VARCHAR},
+      </if>
+      <if test="rcPassword != null">
+        rc_password = #{rcPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="communityName != null">
+        community_name = #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="communityAddress != null">
+        community_address = #{communityAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyTime != null">
+        buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyNumber != null">
+        buy_number = #{buyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="buyMoney != null">
+        buy_money = #{buyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tuiMoneu != null">
+        tui_moneu = #{tuiMoneu,jdbcType=DOUBLE},
+      </if>
+      <if test="gradeId != null">
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="stateId != null">
+        state_id = #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendId != null">
+        recommend_id = #{recommendId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rc_id = #{rcId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.Rc">
+    <!--@mbg.generated-->
+    update rc
+    set rc_code = #{rcCode,jdbcType=VARCHAR},
+      rc_phone = #{rcPhone,jdbcType=VARCHAR},
+      rc_sex = #{rcSex,jdbcType=VARCHAR},
+      rc_address = #{rcAddress,jdbcType=VARCHAR},
+      rc_name = #{rcName,jdbcType=VARCHAR},
+      rc_password = #{rcPassword,jdbcType=VARCHAR},
+      community_name = #{communityName,jdbcType=VARCHAR},
+      community_address = #{communityAddress,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      buy_number = #{buyNumber,jdbcType=INTEGER},
+      buy_money = #{buyMoney,jdbcType=DOUBLE},
+      tui_moneu = #{tuiMoneu,jdbcType=DOUBLE},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      state_id = #{stateId,jdbcType=INTEGER},
+      recommend_id = #{recommendId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER}
+    where rc_id = #{rcId,jdbcType=INTEGER}
+  </update>
+  <select id="getRcQuantity" resultType="int" parameterType="int">
+    select count(1) from rc
+    where DATE_SUB(CURDATE(), INTERVAL #{day} DAY) &lt;= date(create_time)
+  </select>
+</mapper>

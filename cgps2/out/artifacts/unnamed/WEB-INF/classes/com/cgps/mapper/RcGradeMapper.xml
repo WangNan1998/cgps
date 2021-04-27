@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.RcGradeMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.RcGrade">
+    <!--@mbg.generated-->
+    <!--@Table rc_grade-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="condition" jdbcType="DOUBLE" property="condition" />
+    <result column="commission_scale" jdbcType="VARCHAR" property="commissionScale" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, `condition`, commission_scale, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from rc_grade
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from rc_grade
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cgps.pojo.RcGrade">
+    <!--@mbg.generated-->
+    insert into rc_grade (id, `name`, `condition`, 
+      commission_scale, create_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{condition,jdbcType=DOUBLE}, 
+      #{commissionScale,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cgps.pojo.RcGrade">
+    <!--@mbg.generated-->
+    insert into rc_grade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="condition != null">
+        `condition`,
+      </if>
+      <if test="commissionScale != null">
+        commission_scale,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null">
+        #{condition,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionScale != null">
+        #{commissionScale,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.RcGrade">
+    <!--@mbg.generated-->
+    update rc_grade
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="condition != null">
+        `condition` = #{condition,jdbcType=DOUBLE},
+      </if>
+      <if test="commissionScale != null">
+        commission_scale = #{commissionScale,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.RcGrade">
+    <!--@mbg.generated-->
+    update rc_grade
+    set `name` = #{name,jdbcType=VARCHAR},
+      `condition` = #{condition,jdbcType=DOUBLE},
+      commission_scale = #{commissionScale,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

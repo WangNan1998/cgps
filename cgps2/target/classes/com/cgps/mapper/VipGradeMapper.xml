@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.VipGradeMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.VipGrade">
+    <!--@mbg.generated-->
+    <!--@Table vip_grade-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="upgrade_point" jdbcType="INTEGER" property="upgradePoint" />
+    <result column="discount" jdbcType="DOUBLE" property="discount" />
+    <result column="integral_ration" jdbcType="VARCHAR" property="integralRation" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, upgrade_point, discount, integral_ration, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from vip_grade
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from vip_grade
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.VipGrade" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_grade (`name`, upgrade_point, discount, 
+      integral_ration, create_time)
+    values (#{name,jdbcType=VARCHAR}, #{upgradePoint,jdbcType=INTEGER}, #{discount,jdbcType=DOUBLE}, 
+      #{integralRation,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.VipGrade" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_grade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="upgradePoint != null">
+        upgrade_point,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="integralRation != null">
+        integral_ration,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradePoint != null">
+        #{upgradePoint,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="integralRation != null">
+        #{integralRation,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.VipGrade">
+    <!--@mbg.generated-->
+    update vip_grade
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="upgradePoint != null">
+        upgrade_point = #{upgradePoint,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="integralRation != null">
+        integral_ration = #{integralRation,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.VipGrade">
+    <!--@mbg.generated-->
+    update vip_grade
+    set `name` = #{name,jdbcType=VARCHAR},
+      upgrade_point = #{upgradePoint,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=DOUBLE},
+      integral_ration = #{integralRation,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

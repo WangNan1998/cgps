@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.VipMoneyDetailMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.VipMoneyDetail">
+    <!--@mbg.generated-->
+    <!--@Table vip_money_detail-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="is_income" jdbcType="INTEGER" property="isIncome" />
+    <result column="change_money" jdbcType="DOUBLE" property="changeMoney" />
+    <result column="remaining_sum" jdbcType="DOUBLE" property="remainingSum" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="vip_id" jdbcType="INTEGER" property="vipId" />
+    <result column="bill_id" jdbcType="INTEGER" property="billId" />
+    <result column="inetype_id" jdbcType="INTEGER" property="inetypeId" />
+    <result column="op_id" jdbcType="INTEGER" property="opId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, is_income, change_money, remaining_sum, operate_time, remarks, vip_id, bill_id, 
+    inetype_id, op_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from vip_money_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from vip_money_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.VipMoneyDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_money_detail (is_income, change_money, remaining_sum, 
+      operate_time, remarks, vip_id, 
+      bill_id, inetype_id, op_id
+      )
+    values (#{isIncome,jdbcType=INTEGER}, #{changeMoney,jdbcType=DOUBLE}, #{remainingSum,jdbcType=DOUBLE}, 
+      #{operateTime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{vipId,jdbcType=INTEGER}, 
+      #{billId,jdbcType=INTEGER}, #{inetypeId,jdbcType=INTEGER}, #{opId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.VipMoneyDetail" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_money_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="isIncome != null">
+        is_income,
+      </if>
+      <if test="changeMoney != null">
+        change_money,
+      </if>
+      <if test="remainingSum != null">
+        remaining_sum,
+      </if>
+      <if test="operateTime != null">
+        operate_time,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="vipId != null">
+        vip_id,
+      </if>
+      <if test="billId != null">
+        bill_id,
+      </if>
+      <if test="inetypeId != null">
+        inetype_id,
+      </if>
+      <if test="opId != null">
+        op_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="isIncome != null">
+        #{isIncome,jdbcType=INTEGER},
+      </if>
+      <if test="changeMoney != null">
+        #{changeMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remainingSum != null">
+        #{remainingSum,jdbcType=DOUBLE},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="vipId != null">
+        #{vipId,jdbcType=INTEGER},
+      </if>
+      <if test="billId != null">
+        #{billId,jdbcType=INTEGER},
+      </if>
+      <if test="inetypeId != null">
+        #{inetypeId,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null">
+        #{opId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.VipMoneyDetail">
+    <!--@mbg.generated-->
+    update vip_money_detail
+    <set>
+      <if test="isIncome != null">
+        is_income = #{isIncome,jdbcType=INTEGER},
+      </if>
+      <if test="changeMoney != null">
+        change_money = #{changeMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remainingSum != null">
+        remaining_sum = #{remainingSum,jdbcType=DOUBLE},
+      </if>
+      <if test="operateTime != null">
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="vipId != null">
+        vip_id = #{vipId,jdbcType=INTEGER},
+      </if>
+      <if test="billId != null">
+        bill_id = #{billId,jdbcType=INTEGER},
+      </if>
+      <if test="inetypeId != null">
+        inetype_id = #{inetypeId,jdbcType=INTEGER},
+      </if>
+      <if test="opId != null">
+        op_id = #{opId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.VipMoneyDetail">
+    <!--@mbg.generated-->
+    update vip_money_detail
+    set is_income = #{isIncome,jdbcType=INTEGER},
+      change_money = #{changeMoney,jdbcType=DOUBLE},
+      remaining_sum = #{remainingSum,jdbcType=DOUBLE},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      vip_id = #{vipId,jdbcType=INTEGER},
+      bill_id = #{billId,jdbcType=INTEGER},
+      inetype_id = #{inetypeId,jdbcType=INTEGER},
+      op_id = #{opId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

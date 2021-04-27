@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.CommodityAppraiseMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.CommodityAppraise">
+    <!--@mbg.generated-->
+    <!--@Table commodity_appraise-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="star_level" jdbcType="INTEGER" property="starLevel" />
+    <result column="audit_statu" jdbcType="INTEGER" property="auditStatu" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="vip_id" jdbcType="INTEGER" property="vipId" />
+    <result column="bill_id" jdbcType="INTEGER" property="billId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, content, picture, star_level, audit_statu, create_time, commodity_id, vip_id, 
+    bill_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from commodity_appraise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from commodity_appraise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.CommodityAppraise" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into commodity_appraise (content, picture, star_level, 
+      audit_statu, create_time, commodity_id, 
+      vip_id, bill_id)
+    values (#{content,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{starLevel,jdbcType=INTEGER}, 
+      #{auditStatu,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{commodityId,jdbcType=INTEGER}, 
+      #{vipId,jdbcType=INTEGER}, #{billId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.CommodityAppraise" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into commodity_appraise
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        content,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="starLevel != null">
+        star_level,
+      </if>
+      <if test="auditStatu != null">
+        audit_statu,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="vipId != null">
+        vip_id,
+      </if>
+      <if test="billId != null">
+        bill_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null">
+        #{starLevel,jdbcType=INTEGER},
+      </if>
+      <if test="auditStatu != null">
+        #{auditStatu,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="vipId != null">
+        #{vipId,jdbcType=INTEGER},
+      </if>
+      <if test="billId != null">
+        #{billId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.CommodityAppraise">
+    <!--@mbg.generated-->
+    update commodity_appraise
+    <set>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null">
+        star_level = #{starLevel,jdbcType=INTEGER},
+      </if>
+      <if test="auditStatu != null">
+        audit_statu = #{auditStatu,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="vipId != null">
+        vip_id = #{vipId,jdbcType=INTEGER},
+      </if>
+      <if test="billId != null">
+        bill_id = #{billId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.CommodityAppraise">
+    <!--@mbg.generated-->
+    update commodity_appraise
+    set content = #{content,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      star_level = #{starLevel,jdbcType=INTEGER},
+      audit_statu = #{auditStatu,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      vip_id = #{vipId,jdbcType=INTEGER},
+      bill_id = #{billId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

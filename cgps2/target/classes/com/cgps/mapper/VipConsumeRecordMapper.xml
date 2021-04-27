@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.VipConsumeRecordMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.VipConsumeRecord">
+    <!--@mbg.generated-->
+    <!--@Table vip_consume_record-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="bill_code" jdbcType="VARCHAR" property="billCode" />
+    <result column="community_name" jdbcType="VARCHAR" property="communityName" />
+    <result column="buy_time" jdbcType="TIMESTAMP" property="buyTime" />
+    <result column="fu_money" jdbcType="DOUBLE" property="fuMoney" />
+    <result column="tui_money" jdbcType="DOUBLE" property="tuiMoney" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, bill_code, community_name, buy_time, fu_money, tui_money, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from vip_consume_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from vip_consume_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cgps.pojo.VipConsumeRecord">
+    <!--@mbg.generated-->
+    insert into vip_consume_record (id, bill_code, community_name, 
+      buy_time, fu_money, tui_money, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{billCode,jdbcType=VARCHAR}, #{communityName,jdbcType=VARCHAR}, 
+      #{buyTime,jdbcType=TIMESTAMP}, #{fuMoney,jdbcType=DOUBLE}, #{tuiMoney,jdbcType=DOUBLE}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cgps.pojo.VipConsumeRecord">
+    <!--@mbg.generated-->
+    insert into vip_consume_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="billCode != null">
+        bill_code,
+      </if>
+      <if test="communityName != null">
+        community_name,
+      </if>
+      <if test="buyTime != null">
+        buy_time,
+      </if>
+      <if test="fuMoney != null">
+        fu_money,
+      </if>
+      <if test="tuiMoney != null">
+        tui_money,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="communityName != null">
+        #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fuMoney != null">
+        #{fuMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tuiMoney != null">
+        #{tuiMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.VipConsumeRecord">
+    <!--@mbg.generated-->
+    update vip_consume_record
+    <set>
+      <if test="billCode != null">
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="communityName != null">
+        community_name = #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fuMoney != null">
+        fu_money = #{fuMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="tuiMoney != null">
+        tui_money = #{tuiMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.VipConsumeRecord">
+    <!--@mbg.generated-->
+    update vip_consume_record
+    set bill_code = #{billCode,jdbcType=VARCHAR},
+      community_name = #{communityName,jdbcType=VARCHAR},
+      buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      fu_money = #{fuMoney,jdbcType=DOUBLE},
+      tui_money = #{tuiMoney,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

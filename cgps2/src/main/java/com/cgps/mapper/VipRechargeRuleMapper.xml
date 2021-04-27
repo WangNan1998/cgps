@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.VipRechargeRuleMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.VipRechargeRule">
+    <!--@mbg.generated-->
+    <!--@Table vip_recharge_rule-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="scheme_name" jdbcType="VARCHAR" property="schemeName" />
+    <result column="recharge_money" jdbcType="DOUBLE" property="rechargeMoney" />
+    <result column="largess_money" jdbcType="DOUBLE" property="largessMoney" />
+    <result column="activity_photo" jdbcType="VARCHAR" property="activityPhoto" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, scheme_name, recharge_money, largess_money, activity_photo, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from vip_recharge_rule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from vip_recharge_rule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.VipRechargeRule" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_recharge_rule (scheme_name, recharge_money, largess_money, 
+      activity_photo, create_time)
+    values (#{schemeName,jdbcType=VARCHAR}, #{rechargeMoney,jdbcType=DOUBLE}, #{largessMoney,jdbcType=DOUBLE}, 
+      #{activityPhoto,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cgps.pojo.VipRechargeRule" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into vip_recharge_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="schemeName != null">
+        scheme_name,
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_money,
+      </if>
+      <if test="largessMoney != null">
+        largess_money,
+      </if>
+      <if test="activityPhoto != null">
+        activity_photo,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="schemeName != null">
+        #{schemeName,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeMoney != null">
+        #{rechargeMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="largessMoney != null">
+        #{largessMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="activityPhoto != null">
+        #{activityPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.VipRechargeRule">
+    <!--@mbg.generated-->
+    update vip_recharge_rule
+    <set>
+      <if test="schemeName != null">
+        scheme_name = #{schemeName,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeMoney != null">
+        recharge_money = #{rechargeMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="largessMoney != null">
+        largess_money = #{largessMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="activityPhoto != null">
+        activity_photo = #{activityPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.VipRechargeRule">
+    <!--@mbg.generated-->
+    update vip_recharge_rule
+    set scheme_name = #{schemeName,jdbcType=VARCHAR},
+      recharge_money = #{rechargeMoney,jdbcType=DOUBLE},
+      largess_money = #{largessMoney,jdbcType=DOUBLE},
+      activity_photo = #{activityPhoto,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cgps.mapper.CommodityMapper">
+  <resultMap id="BaseResultMap" type="com.cgps.pojo.Commodity">
+    <!--@mbg.generated-->
+    <!--@Table commodity-->
+    <id column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="commodity_code" jdbcType="VARCHAR" property="commodityCode" />
+    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+    <result column="commodity_alias" jdbcType="VARCHAR" property="commodityAlias" />
+    <result column="commodity_memory" jdbcType="VARCHAR" property="commodityMemory" />
+    <result column="commodity_mprice" jdbcType="DECIMAL" property="commodityMprice" />
+    <result column="commodity_dprice" jdbcType="DECIMAL" property="commodityDprice" />
+    <result column="commodity_source" jdbcType="VARCHAR" property="commoditySource" />
+    <result column="commodity_explain" jdbcType="VARCHAR" property="commodityExplain" />
+    <result column="commodity_describe" jdbcType="VARCHAR" property="commodityDescribe" />
+    <result column="entering_time" jdbcType="TIMESTAMP" property="enteringTime" />
+    <result column="grounding_time" jdbcType="TIMESTAMP" property="groundingTime" />
+    <result column="undercarriage_time" jdbcType="TIMESTAMP" property="undercarriageTime" />
+    <result column="main_pictures" jdbcType="VARCHAR" property="mainPictures" />
+    <result column="activity_pictures" jdbcType="VARCHAR" property="activityPictures" />
+    <result column="commodity_video" jdbcType="VARCHAR" property="commodityVideo" />
+    <result column="state_id" jdbcType="INTEGER" property="stateId" />
+    <result column="classify_id" jdbcType="INTEGER" property="classifyId" />
+    <result column="subclassify_id" jdbcType="INTEGER" property="subclassifyId" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="unit_id" jdbcType="INTEGER" property="unitId" />
+    <result column="provider_id" jdbcType="INTEGER" property="providerId" />
+    <result column="label_id" jdbcType="INTEGER" property="labelId" />
+    <result column="spec_id" jdbcType="INTEGER" property="specId" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    commodity_id, commodity_code, commodity_name, commodity_alias, commodity_memory, 
+    commodity_mprice, commodity_dprice, commodity_source, commodity_explain, commodity_describe, 
+    entering_time, grounding_time, undercarriage_time, main_pictures, activity_pictures, 
+    commodity_video, state_id, classify_id, subclassify_id, brand_id, unit_id, provider_id, 
+    label_id, spec_id, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from commodity
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="commodity_id" keyProperty="commodityId" parameterType="com.cgps.pojo.Commodity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into commodity (commodity_code, commodity_name, commodity_alias, 
+      commodity_memory, commodity_mprice, commodity_dprice, 
+      commodity_source, commodity_explain, commodity_describe, 
+      entering_time, grounding_time, undercarriage_time, 
+      main_pictures, activity_pictures, commodity_video, 
+      state_id, classify_id, subclassify_id, 
+      brand_id, unit_id, provider_id, 
+      label_id, spec_id, is_delete
+      )
+    values (#{commodityCode,jdbcType=VARCHAR}, #{commodityName,jdbcType=VARCHAR}, #{commodityAlias,jdbcType=VARCHAR}, 
+      #{commodityMemory,jdbcType=VARCHAR}, #{commodityMprice,jdbcType=DECIMAL}, #{commodityDprice,jdbcType=DECIMAL}, 
+      #{commoditySource,jdbcType=VARCHAR}, #{commodityExplain,jdbcType=VARCHAR}, #{commodityDescribe,jdbcType=VARCHAR}, 
+      #{enteringTime,jdbcType=TIMESTAMP}, #{groundingTime,jdbcType=TIMESTAMP}, #{undercarriageTime,jdbcType=TIMESTAMP}, 
+      #{mainPictures,jdbcType=VARCHAR}, #{activityPictures,jdbcType=VARCHAR}, #{commodityVideo,jdbcType=VARCHAR}, 
+      #{stateId,jdbcType=INTEGER}, #{classifyId,jdbcType=INTEGER}, #{subclassifyId,jdbcType=INTEGER}, 
+      #{brandId,jdbcType=INTEGER}, #{unitId,jdbcType=INTEGER}, #{providerId,jdbcType=INTEGER}, 
+      #{labelId,jdbcType=INTEGER}, #{specId,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="commodity_id" keyProperty="commodityId" parameterType="com.cgps.pojo.Commodity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commodityCode != null">
+        commodity_code,
+      </if>
+      <if test="commodityName != null">
+        commodity_name,
+      </if>
+      <if test="commodityAlias != null">
+        commodity_alias,
+      </if>
+      <if test="commodityMemory != null">
+        commodity_memory,
+      </if>
+      <if test="commodityMprice != null">
+        commodity_mprice,
+      </if>
+      <if test="commodityDprice != null">
+        commodity_dprice,
+      </if>
+      <if test="commoditySource != null">
+        commodity_source,
+      </if>
+      <if test="commodityExplain != null">
+        commodity_explain,
+      </if>
+      <if test="commodityDescribe != null">
+        commodity_describe,
+      </if>
+      <if test="enteringTime != null">
+        entering_time,
+      </if>
+      <if test="groundingTime != null">
+        grounding_time,
+      </if>
+      <if test="undercarriageTime != null">
+        undercarriage_time,
+      </if>
+      <if test="mainPictures != null">
+        main_pictures,
+      </if>
+      <if test="activityPictures != null">
+        activity_pictures,
+      </if>
+      <if test="commodityVideo != null">
+        commodity_video,
+      </if>
+      <if test="stateId != null">
+        state_id,
+      </if>
+      <if test="classifyId != null">
+        classify_id,
+      </if>
+      <if test="subclassifyId != null">
+        subclassify_id,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+      <if test="providerId != null">
+        provider_id,
+      </if>
+      <if test="labelId != null">
+        label_id,
+      </if>
+      <if test="specId != null">
+        spec_id,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commodityCode != null">
+        #{commodityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityName != null">
+        #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityAlias != null">
+        #{commodityAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityMemory != null">
+        #{commodityMemory,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityMprice != null">
+        #{commodityMprice,jdbcType=DECIMAL},
+      </if>
+      <if test="commodityDprice != null">
+        #{commodityDprice,jdbcType=DECIMAL},
+      </if>
+      <if test="commoditySource != null">
+        #{commoditySource,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityExplain != null">
+        #{commodityExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityDescribe != null">
+        #{commodityDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringTime != null">
+        #{enteringTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groundingTime != null">
+        #{groundingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="undercarriageTime != null">
+        #{undercarriageTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPictures != null">
+        #{mainPictures,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPictures != null">
+        #{activityPictures,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityVideo != null">
+        #{commodityVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="stateId != null">
+        #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="classifyId != null">
+        #{classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="subclassifyId != null">
+        #{subclassifyId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="labelId != null">
+        #{labelId,jdbcType=INTEGER},
+      </if>
+      <if test="specId != null">
+        #{specId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cgps.pojo.Commodity">
+    <!--@mbg.generated-->
+    update commodity
+    <set>
+      <if test="commodityCode != null">
+        commodity_code = #{commodityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityName != null">
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityAlias != null">
+        commodity_alias = #{commodityAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityMemory != null">
+        commodity_memory = #{commodityMemory,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityMprice != null">
+        commodity_mprice = #{commodityMprice,jdbcType=DECIMAL},
+      </if>
+      <if test="commodityDprice != null">
+        commodity_dprice = #{commodityDprice,jdbcType=DECIMAL},
+      </if>
+      <if test="commoditySource != null">
+        commodity_source = #{commoditySource,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityExplain != null">
+        commodity_explain = #{commodityExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityDescribe != null">
+        commodity_describe = #{commodityDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringTime != null">
+        entering_time = #{enteringTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groundingTime != null">
+        grounding_time = #{groundingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="undercarriageTime != null">
+        undercarriage_time = #{undercarriageTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPictures != null">
+        main_pictures = #{mainPictures,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPictures != null">
+        activity_pictures = #{activityPictures,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityVideo != null">
+        commodity_video = #{commodityVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="stateId != null">
+        state_id = #{stateId,jdbcType=INTEGER},
+      </if>
+      <if test="classifyId != null">
+        classify_id = #{classifyId,jdbcType=INTEGER},
+      </if>
+      <if test="subclassifyId != null">
+        subclassify_id = #{subclassifyId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="providerId != null">
+        provider_id = #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="labelId != null">
+        label_id = #{labelId,jdbcType=INTEGER},
+      </if>
+      <if test="specId != null">
+        spec_id = #{specId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cgps.pojo.Commodity">
+    <!--@mbg.generated-->
+    update commodity
+    set commodity_code = #{commodityCode,jdbcType=VARCHAR},
+      commodity_name = #{commodityName,jdbcType=VARCHAR},
+      commodity_alias = #{commodityAlias,jdbcType=VARCHAR},
+      commodity_memory = #{commodityMemory,jdbcType=VARCHAR},
+      commodity_mprice = #{commodityMprice,jdbcType=DECIMAL},
+      commodity_dprice = #{commodityDprice,jdbcType=DECIMAL},
+      commodity_source = #{commoditySource,jdbcType=VARCHAR},
+      commodity_explain = #{commodityExplain,jdbcType=VARCHAR},
+      commodity_describe = #{commodityDescribe,jdbcType=VARCHAR},
+      entering_time = #{enteringTime,jdbcType=TIMESTAMP},
+      grounding_time = #{groundingTime,jdbcType=TIMESTAMP},
+      undercarriage_time = #{undercarriageTime,jdbcType=TIMESTAMP},
+      main_pictures = #{mainPictures,jdbcType=VARCHAR},
+      activity_pictures = #{activityPictures,jdbcType=VARCHAR},
+      commodity_video = #{commodityVideo,jdbcType=VARCHAR},
+      state_id = #{stateId,jdbcType=INTEGER},
+      classify_id = #{classifyId,jdbcType=INTEGER},
+      subclassify_id = #{subclassifyId,jdbcType=INTEGER},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      provider_id = #{providerId,jdbcType=INTEGER},
+      label_id = #{labelId,jdbcType=INTEGER},
+      spec_id = #{specId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from commodity limit #{pageIndex},#{pageSize}
+  </select>
+  <select id="getCommodityByCode" resultMap="BaseResultMap" parameterType="string">
+    select * from commodity where commodity_code = #{code}
+  </select>
+  <select id="findByCondition" resultMap="BaseResultMap">
+    select * from commodity
+    <where>
+      <if test="commodity.brandId != null and commodity.brandId != '0' and commodity.brandId != ''">
+        and brand_id = #{commodity.brandId}
+      </if>
+      <if test="commodity.classifyId != null and commodity.classifyId != '' and commodity.classifyId != '0'">
+        and classify_id = #{commodity.classifyId}
+      </if>
+      <if test="commodity.subclassifyId != null and commodity.subclassifyId != '' and commodity.subclassifyId != '0'">
+        and subclassify_id = #{commodity.subclassifyId}
+      </if>
+      <if test="commodity.commodityName != null and commodity.commodityName != '' ">
+        and commodity_name like CONCAT("%",#{commodity.commodityName,jdbcType=VARCHAR},"%")
+      </if>
+      <if test="commodity.commodityCode != null and commodity.commodityCode != '' ">
+        and commodity_code like CONCAT("%",#{commodity.commodityCode,jdbcType=VARCHAR},"%")
+      </if>
+      <if test="commodity.commodityMemory != null and commodity.commodityMemory != '' ">
+        and commodity_memory like CONCAT("%",#{commodity.commodityMemory,jdbcType=VARCHAR},"%")
+      </if>
+      <if test="commodity.commodityAlias != null and commodity.commodityAlias != '' ">
+        and commodity_alias like CONCAT("%",#{commodity.commodityAlias,jdbcType=VARCHAR},"%")
+      </if>
+      <if test="commodity.commoditySource != null and commodity.commoditySource != '' ">
+        and commodity_source = #{commodity.commoditySource,jdbcType=VARCHAR}
+      </if>
+      <if test="commodity.stateId != null and commodity.stateId !=0">
+        and state_id = #{commodity.stateId}
+      </if>
+      <if test="commodity.startTime != null and commodity.startTime != ''
+               and commodity.endTime != null and commodity.endTime != ''">
+        and entering_time between #{commodity.startTime,jdbcType=TIMESTAMP} and #{commodity.endTime}
+      </if>
+      and is_delete = '1'
+    </where>
+    limit #{pageIndex},#{pageSize}
+  </select>
+</mapper>
