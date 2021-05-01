@@ -47,6 +47,123 @@ public class CommodityController {
     @Resource
     private CommodityUnitMapper commodityUnitMapper;
 
+
+    /**
+     * 商品删除
+     * */
+    @RequestMapping(value = "/delete")
+    @ResponseBody
+    public String delete(@RequestParam(value = "c_id")int[] id){
+        if(id.length > 0){
+            for(int i : id){
+                commodityMapper.deleteById(i);
+            }
+            return "success";
+        }
+        return "";
+    }
+
+    /**
+     * 商品修改
+     * */
+    @RequestMapping(value = "/modify2")
+    public String modify2(Commodity commodity,HttpServletRequest request,Model model,
+                          @RequestParam(value = "pictures",required = false)MultipartFile[] attachs) {
+        boolean flag = true;
+        String path = request.getSession().getServletContext().getRealPath("statics" + File.separator + "image");
+        Commodity commodity2 = commodity;
+        String code = commodityMapper.selectByPrimaryKey(commodity.getCommodityId()).getCommodityCode();
+        System.out.println("图片长度----------->"+attachs.length);
+        System.out.println("通过key获取到的商品信息------》"+commodity2);
+        if (!commodity.getCommodityCode().equals(code) // 判断商品编码是否存在
+                && null != commodityMapper.getCommodityByCode(commodity.getCommodityCode())) {
+            model.addAttribute("info", "修改失败，该商品编号已存在");
+            return "commodity_modify";
+        }
+        // 判断是否有选择商品标签，单位，品牌，分类等信息
+        if(null != commodity.getUnitId() && commodity.getUnitId()!=0){
+            commodity2.setUnitId(commodity.getUnitId());
+        }
+        if(null != commodity.getBrandId() && commodity.getBrandId()!=0){
+            commodity2.setBrandId(commodity.getBrandId());
+        }
+        if(null != commodity.getClassifyId() && commodity.getClassifyId()!=0){
+            commodity2.setClassifyId(commodity.getClassifyId());
+        }
+        if(null != commodity.getSubclassifyId() && commodity.getSubclassifyId()!=0){
+            commodity2.setSubclassifyId(commodity.getSubclassifyId());
+        }
+        if(null != commodity.getLabelId() && commodity.getLabelId()!=0){
+            commodity2.setLabelId(commodity.getLabelId());
+        }
+
+        if (null != attachs) {
+            for (int i = 0; i < attachs.length; i++) {
+                MultipartFile attach = attachs[i];
+                if (!attach.isEmpty()) {
+                    String oldFileName = attach.getOriginalFilename();
+                    String prefix = FilenameUtils.getExtension(oldFileName);
+                    int fileSize = 500000;
+                    if (attach.getSize() > fileSize) {
+                        request.setAttribute("info", "文件长传大小超过了500kb");
+                        return "commodity_modify";
+                    } else if (prefix.equalsIgnoreCase("jpg")
+                            || prefix.equalsIgnoreCase("png")
+                            || prefix.equalsIgnoreCase("jpeg")
+                            || prefix.equalsIgnoreCase("pneg")
+                            || prefix.equalsIgnoreCase("mp4")) {
+                        String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1000000)
+                                + "_Goods.jpg";
+                        File targetFile = new File(path, fileName);
+                        if (!targetFile.exists()) {
+                            targetFile.mkdirs();
+                        }
+
+                        // 保存
+                        try {
+                            attach.transferTo(targetFile);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            request.setAttribute("info", "文件上传失败");
+                            flag = false;
+                        }
+
+                        if (i == 0) {
+                            commodity2.setMainPictures(fileName);
+                        } else if (i == 1) {
+                            commodity2.setActivityPictures(fileName);
+                        } else if (i == 2) {
+                            commodity2.setCommodityVideo(fileName);
+                        }
+                    } else {
+                        request.setAttribute("info", "上传图片格式不正确");
+                        flag = false;
+                    }
+                }
+            }
+        }
+        if (flag) {
+            commodity2.setIsDelete(1);
+            if (commodityMapper.updateByPrimaryKeySelective(commodity2) > 0) {
+                request.setAttribute("info", "success");
+            } else {
+                model.addAttribute(commodity);
+                request.setAttribute("info", "fail");
+            }
+            return "commodity_list";
+        }
+        return "";
+    }
+    /**
+     * 跳转商品修改页面
+     * */
+    @RequestMapping(value = "/modify")
+    public String modify(@RequestParam(value = "id")Integer id,Model model){
+        Commodity commodity = commodityMapper.selectByPrimaryKey(id);
+        model.addAttribute(commodity);
+        return "commodity_modify";
+    }
+
     /**
      * 跳商品详情页面
      * */
@@ -190,7 +307,7 @@ public class CommodityController {
                 String subclassifyName = commoditySubclassifyMapper.selectByPrimaryKey(c.getSubclassifyId()).getName();
                 c.setSubclassifyName(subclassifyName);
             }else {c.setSubclassifyName("");}
-            if(null != c.getUnitId()){
+            if(null != c.getUnitId() && c.getUnitId() > 0){
                 String unitName = commodityUnitMapper.selectByPrimaryKey(c.getUnitId()).getName();
                 c.setUnitName(unitName);
             }else {c.setUnitName("");}
@@ -227,6 +344,9 @@ public class CommodityController {
             }else {
                 return "notexist";
             }
+        }else if("brand".equals(method)){
+            List<CommodityBrand> brands = commodityBrandMapper.findAllBrand();
+            return JSON.toJSONString(brands);
         }
         return "";
     }

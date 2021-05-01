@@ -32,4 +32,9 @@ public interface CommodityMapper {
      * 根据各种条件进行筛选查询结果
      * */
     List<Commodity> findByCondition(@Param("commodity") Commodity commodity, @Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer PageSize);
+
+    /**
+     * 逻辑删除商品
+     * */
+    int deleteById(Integer id);
 }

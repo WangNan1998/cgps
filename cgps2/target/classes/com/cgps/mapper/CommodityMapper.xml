@@ -332,10 +332,10 @@
     where commodity_id = #{commodityId,jdbcType=INTEGER}
   </update>
   <select id="findAll" resultMap="BaseResultMap">
-    select * from commodity limit #{pageIndex},#{pageSize}
+    select * from commodity limit #{pageIndex},#{pageSize} where is_delete = '1'
   </select>
   <select id="getCommodityByCode" resultMap="BaseResultMap" parameterType="string">
-    select * from commodity where commodity_code = #{code}
+    select * from commodity where commodity_code = #{code} and is_delete = '1'
   </select>
   <select id="findByCondition" resultMap="BaseResultMap">
     select * from commodity
@@ -375,4 +375,7 @@
     </where>
     limit #{pageIndex},#{pageSize}
   </select>
+  <update id="deleteById" parameterType="int">
+    update commodity set is_delete = '0' where commodity_id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

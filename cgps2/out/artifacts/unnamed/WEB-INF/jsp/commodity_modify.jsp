@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@include file="cgps_project_path.jsp"%>
+<%@include file="cgps_project_path.jsp" %>
 <html>
 <head>
     <title>商品修改页面</title>
@@ -34,24 +34,74 @@
         <!--End 头部信息-->
 
         <main class="lyear-layout-content">
-            <p>商品分类-->：${commodity.classifyName} / ${commodity.subclassifyName}</p>
-            <p>助记码-->:${commodity.commodityMemory}</p>
-            <p>商品名称--->:${commodity.commodityName}</p>
-            <p>商品编码-->:${commodity.commodityCode}</p>
-            <p>商品品牌--->:${commodity.brandName}</p>
-            <p>商品产地--->:${commodity.commoditySource}</p>
-            <p>商品标签--->:${commodity.labelName}</p>
-            <p>商品主图--->: <img src="${path}/statics/image/${commodity.mainPictures}" alt=""></p>
-            <p>商品活动图片--->: <img src="${path}/statics/image/${commodity.activityPictures}" alt=""></p>
-            <p>商品视频--->: <img src="${path}/statics/image/${commodity.commodityVideo}" alt=""></p>
-            <p>商品单位--->:${commodity.unitName}</p>
-            <p>商品说明--->:${commodity.commodityExplain}</p>
-            <p>商品描述--->:${commodity.commodityDescribe}</p>
-            <p>划线价--->:${commodity.commodityMprice}</p>
-            <p>商城价-->:${commodity.commodityDprice}</p>
-            <p>上架时间--->:<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${commodity.groundingTime}"/></p>
-            <p>下架时间--->:<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${commodity.undercarriageTime}"/></p>
-            <p>录入时间--->:<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${commodity.enteringTime}"/></p>
+            <form action="${path}/commodity/modify2" method="post" enctype="multipart/form-data">
+                商品分类：
+                <select name="classifyId">
+                    <option value="0">请选择</option>
+                </select>
+                请选择子分类:
+                <select name="subclassifyId">
+                    <option value="0">请选择</option>
+                </select><br>
+                商品别名:
+                <input type="text" name="commodityAlias" value="${commodity.commodityAlias}"> <br>
+                助记码：
+                <input type="text" name="commodityMemory" value="${commodity.commodityMemory}"><br>
+                商品名称：
+                <input type="text" name="commodityName" value="${commodity.commodityName}"><br>
+                商品编码:
+                <input type="text" name="commodityCode" value="${commodity.commodityCode}"><br>
+                商品品牌：
+                <select name="brandId">
+                    <option value="0">请选择</option>
+                </select><br>
+                商品产地：
+                <input type="text" name="commoditySource" value="${commodity.commoditySource}"><br>
+                商品标签：
+                <select name="labelId">
+                    <option value="0">请选择</option>
+                </select><br>
+                商品主图：<img src="${path}/statics/image/${commodity.mainPictures}" alt="">
+                <input type="file" name="pictures"><br>
+                商品活动图:<img src="${path}/statics/image/${commodity.activityPictures}" alt="">
+                <input type="file" name="pictures"><br>
+                商品视频： <img src="${path}/statics/image/${commodity.commodityVideo}" alt="">
+                <input type="file" name="pictures"><br>
+                商品单位：
+                <select name="unitId">
+                    <option value="0">请选择</option>
+                </select><br>
+                商品说明：
+                <textarea style="height:30px;" name="commodityExplain" cols="30" rows="10">
+                    ${commodity.commodityExplain}
+                </textarea><br>
+                商品描述：
+                <textarea style="height:30px;" name="commodityDescribe" cols="30" rows="10">
+                    ${commodity.commodityDescribe}
+                </textarea><br>
+                划线价：
+                <input type="text" name="commodityMprice" value="${commodity.commodityMprice}"><br>
+                商城价：
+                <input type="text" name="commodityDprice" value="${commodity.commodityDprice}"><br>
+               <%-- 上架时间：
+                <input type="text" autocomplete="off" style="width:200px;display: inline-block" class="jeinput"
+                       id="enYMDhms" name="groundingTime"
+                       value=" <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${commodity.groundingTime}"/>">
+                <br>
+                下架时间：
+                <input type="text" autocomplete="off" style="width:200px;display: inline-block" class="jeinput"
+                       id="enYMD" name="undercarriageTime"
+                       value=" <fmt:formatDate pattern="yyyy-MM-dd" value="${commodity.undercarriageTime}"/>">
+                <br>
+                录入时间：
+                <input type="text" autocomplete="off" style="width:200px;display: inline-block" class="jeinput"
+                       id="test04" name="enteringTime"
+                       value=" <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${commodity.enteringTime}"/>">
+                <br>--%>
+                    <input type="hidden" name="commodityId" value="${commodity.commodityId}">
+                <input class="btn btn-success " type="submit" value="提交">
+                <input class="btn btn-danger" type="reset" value="重置">
+            </form>
         </main>
     </div>
 </div>
@@ -61,6 +111,13 @@
 <script type="text/javascript" src="${path}/statics/js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript" src="${path}/statics/js/main.min.js"></script>
 <script type="text/javascript" src="${path}/statics/date-control/demo.js"></script>
+<c:if test="${null != info}">
+    <script>
+        coco.init();
+        coco.alert('${info}');
+        <%request.removeAttribute("info");%>
+    </script>
+</c:if>
 <script>
     // 点击a标签颜色变化
     $(function () {
@@ -70,6 +127,78 @@
             .css({"background": "#33CACA", "color": "#FFF"});
         commodity.parent().parent().show();
         commodity.eq(0).css("color", "#33caca");
+    })
+    // 商品分类数据获取
+    $.ajax({
+        url: "${path}/commodity/add-data",
+        dataType: "JSON",
+        data: {"method": "classify"},
+        success: function (value) {
+            for (let i = 0; i < value.length; i++) {
+                let option_ = "<option value='" + (value[i].id) + "'>" + (value[i].name) + "</option>";
+                $("select[name='classifyId']").append(option_);
+            }
+            $("select[name=classifyId] option[value=${commodity.classifyId}]").prop("selected", true);
+        }
+    })
+    // 获取商品子分类数据
+    function delay() {
+        $.ajax({
+            url: "${path}/commodity/add-data",
+            dataType: "JSON",
+            data: {"method": "subClassify", "classifyId": $("select[name='classifyId']").val()},
+            success: function (value) {
+                let option_ = "<option value='0'>请选择</option>";
+                for (let i = 0; i < value.length; i++) {
+                    option_ += "<option value='" + (value[i].id) + "'>" + (value[i].name) + "</option>";
+                }
+                $("select[name='subclassifyId']").html(option_);
+                $("select[name=subclassifyId] option[value=${commodity.subclassifyId}]").prop("selected", true);
+            }
+        })
+    }
+    $("select[name='classifyId']").click(function () {
+        delay()
+    });
+    setTimeout("delay()",500);
+    // 获取所有的计量单位
+    $.ajax({
+        url: "${path}/commodity/add-data",
+        dataType: "JSON",
+        data: {"method": "unit"},
+        success: function (value) {
+            for (let i = 0; i < value.length; i++) {
+                let label_ = "<option value='" + (value[i].id) + "'>" + (value[i].name) + "</option>";
+                $("select[name=unitId]").append(label_);
+            }
+            $("select[name=unitId] option[value=${commodity.unitId}]").prop("selected", true);
+        }
+    })
+    // 获取所有的商品标签
+    $.ajax({
+        url: "${path}/commodity/add-data",
+        dataType: "JSON",
+        data: {"method": "label"},
+        success: function (value) {
+            for (let i = 0; i < value.length; i++) {
+                let label_ = "<option value='" + (value[i].id) + "'>" + (value[i].name) + "</option>";
+                $("select[name=labelId]").append(label_);
+            }
+            $("select[name=labelId] option[value=${commodity.labelId}]").prop("selected", true);
+        }
+    })
+    // 获取所有的商品品牌
+    $.ajax({
+        url: "${path}/commodity/add-data",
+        dataType: "JSON",
+        data: {"method": "brand"},
+        success: function (value) {
+            for (let i = 0; i < value.length; i++) {
+                let label_ = "<option value='" + (value[i].id) + "'>" + (value[i].name) + "</option>";
+                $("select[name=brandId]").append(label_);
+            }
+            $("select[name=brandId] option[value=${commodity.brandId}]").prop("selected", true);
+        }
     })
 </script>
 </body>

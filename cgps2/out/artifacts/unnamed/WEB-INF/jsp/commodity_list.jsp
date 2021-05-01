@@ -146,18 +146,21 @@
 
                         <%--商品展示表格--%>
                         <div class="card-body">
-                            <div id="stateShow" style="height:32px;border-bottom:1px solid #666" class="col-lg-12 hidden">
-                                    <a href="javascript:void(0)" id="cleanUp" style="display: inline-block;margin:0 16px;" class="mdi mdi-close text-center"></a>
-                                    <span id="showNumber" style="display: inline-block;width:80px;">已选择0项</span>
-                                    <a style="display: inline-block;width:120px;" class="btn btn-default btn-xs" href="#">批量定时上下架</a>
-                                    <a style="display: inline-block;width:80px;" class="btn btn-default btn-xs" href="#">批量上架</a>
-                                    <a style="display: inline-block;width:80px;" class="btn btn-default btn-xs" href="#">批量下架</a>
-                                    <a style="display: inline-block;width:80px;" class="btn btn-default btn-xs" href="#">批量删除</a>
+                            <div id="stateShow" style="height:32px;border-bottom:1px solid #666"
+                                 class="col-lg-12 hidden">
+                                <a href="javascript:void(0)" id="cleanUp" style="display: inline-block;margin:0 16px;"
+                                   class="mdi mdi-close text-center"></a>
+                                <span id="showNumber" style="display: inline-block;width:80px;">已选择0项</span>
+                                <a style="display: inline-block;width:120px;" class="btn btn-default btn-xs" href="#">批量定时上下架</a>
+                                <a style="display: inline-block;width:80px;" class="btn btn-default btn-xs" href="#">批量上架</a>
+                                <a style="display: inline-block;width:80px;" class="btn btn-default btn-xs" href="#">批量下架</a>
+                                <a style="display: inline-block;width:80px;" class="btn btn-default btn-xs" href="#">批量删除</a>
                             </div>
                             <table class="table table-hover table-striped">
                                 <thead>
                                 <tr class="active">
-                                    <th style="text-align: center"><input id="mainSelect" type="checkbox" style="margin:0 0 5px 20px">
+                                    <th style="text-align: center"><input id="mainSelect" type="checkbox"
+                                                                          style="margin:0 0 5px 20px">
                                     </th>
                                     <th style="text-align: center">商品图片</th>
                                     <th style="text-align: center">商品分类</th>
@@ -208,65 +211,70 @@
     let totalQuantity = null;
 
     // 监听复选框选择事件
-    setTimeout("delayed()",500)
-    function delayed(){
+    setTimeout("delayed()", 500)
+
+    function delayed() {
         let cSelect = $(".c_select");
 
         $("#mainSelect").click(function () {
             let result = $(this).is(":checked");
-            cSelect.prop("checked",result);
+            cSelect.prop("checked", result);
             isNumber();
         })
         $(".c_select").click(function () {
             isNumber();
         })
         $("#cleanUp").click(function () {
-            $("#mainSelect").prop("checked",false);
-            cSelect.prop("checked",false);
+            $("#mainSelect").prop("checked", false);
+            cSelect.prop("checked", false);
             isNumber();
         })
     }
-function isNumber(){
-    let cSelect = $(".c_select");
-    let number = 0;
-    for(let i = 0;i < cSelect.length;i++){
-        let result = cSelect.eq(i).is(":checked");
-        if(result)number++;
-    }
-    if(number > 0){
-        $("#stateShow").removeClass("hidden");
-        $("#showNumber").text("已选择"+number+"项");
-        if(number == cSelect.length){
-            $("#mainSelect").prop("checked",true)
-        }else {
-            $("#mainSelect").prop("checked",false)
+
+    function isNumber() {
+        let cSelect = $(".c_select");
+        let number = 0;
+        for (let i = 0; i < cSelect.length; i++) {
+            let result = cSelect.eq(i).is(":checked");
+            if (result) number++;
+        }
+        if (number > 0) {
+            $("#stateShow").removeClass("hidden");
+            $("#showNumber").text("已选择" + number + "项");
+            if (number == cSelect.length) {
+                $("#mainSelect").prop("checked", true)
+            } else {
+                $("#mainSelect").prop("checked", false)
+            }
+        } else {
+            $("#stateShow").addClass("hidden");
         }
     }
-    else {
-        $("#stateShow").addClass("hidden");
-    }
-}
+
     // 分页
     $(".paging_even").click(function () {
         let temp = $(this).text();
-         if(temp=="首页"){
-             pageIndex = 1;
-             paging();
-         }else if(temp=="上一页"){
-             if(pageIndex == 1){}else {
-                 pageIndex = pageIndex - 1;
-                 paging();
-             }
-         }else if(temp=="下一页"){
-             if(pageIndex == totalPage){}else {
-                 pageIndex = pageIndex + 1;
-                 paging();
-             }
-         }else if(temp=="尾页"){
-             pageIndex = totalPage;
-             paging();
-         }
+        if (temp == "首页") {
+            pageIndex = 1;
+            paging();
+        } else if (temp == "上一页") {
+            if (pageIndex == 1) {
+            } else {
+                pageIndex = pageIndex - 1;
+                paging();
+            }
+        } else if (temp == "下一页") {
+            if (pageIndex == totalPage) {
+            } else {
+                pageIndex = pageIndex + 1;
+                paging();
+            }
+        } else if (temp == "尾页") {
+            pageIndex = totalPage;
+            paging();
+        }
     })
+
     // 分页ajax方法
     function paging() {
         if ($("#queryForm1").is(":hidden")) {
@@ -315,6 +323,7 @@ function isNumber(){
             })
         }
     }
+
     // 取消input框的键盘事件
     $(function () {
         /* $('input[name=commodityName]').keyup(function(){
@@ -328,11 +337,11 @@ function isNumber(){
     })
     // 点击查询按钮查询商品数据
     $("#queryForm1").click(function () {
-        pageIndex=null;
+        pageIndex = null;
         paging();
     })
     $("#queryForm2").click(function () {
-        pageIndex=null;
+        pageIndex = null;
         paging();
     })
     // 商品分类数据获取
@@ -363,6 +372,7 @@ function isNumber(){
             }
         })
     })
+
     // 时间戳转当前时间
     function timestampToTime(timestamp) {
         //时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -376,6 +386,7 @@ function isNumber(){
         */
         return Yy + Mm + Dd;
     }
+
     // 显示商品数据
     function getData() {
         $.ajax({
@@ -387,6 +398,7 @@ function isNumber(){
             }
         })
     }
+
     // 将数据显示到指定的标签中
     function toLabel(value) {
         $("#list-show").html("");
@@ -397,14 +409,14 @@ function isNumber(){
         totalPage = paging.totalPage;
         totalQuantity = paging.totalQuantity;
         $("#showPaging").find("b").remove();
-        if(totalPage < 1){
-            $("#showPaging").append("<b>当前页 "+pageIndex+" / 1</b>");
-        }else if(pageIndex > totalPage){
-            pageIndex=1;
-            $("#showPaging").append("<b>当前页 "+pageIndex+" / "+totalPage+"</b>");
+        if (totalPage < 1) {
+            $("#showPaging").append("<b>当前页 " + pageIndex + " / 1</b>");
+        } else if (pageIndex > totalPage) {
+            pageIndex = 1;
+            $("#showPaging").append("<b>当前页 " + pageIndex + " / " + totalPage + "</b>");
             paging();
-        }else {
-            $("#showPaging").append("<b>当前页 "+pageIndex+" / "+totalPage+"</b>");
+        } else {
+            $("#showPaging").append("<b>当前页 " + pageIndex + " / " + totalPage + "</b>");
         }
 
         for (let i = 1; i < value.length; i++) {
@@ -430,9 +442,9 @@ function isNumber(){
                 "<td style=\"text-align: center\">" + (value[i].commodityMprice) + " 元</td>\n" +
                 "<td style=\"text-align: center\">999</td>\n" +
                 "<td style=\"text-align: center\">\n" +
-                "  <a href=\"#\">删除</a>\n" +
-                "  <a href=\"#\">编辑</a>\n" +
-                "  <a href=\"${path}/commodity/detail?id="+(value[i].commodityId)+"\">详情</a>\n" +
+                "  <a href=\"javascript:c_delete()\">删除</a>\n" +
+                "  <a href=\"${path}/commodity/modify?id=" + (value[i].commodityId) + "\">编辑</a>\n" +
+                "  <a href=\"${path}/commodity/detail?id=" + (value[i].commodityId) + "\">详情</a>\n" +
                 "</td>\n" +
                 "</tr>"
             $("#list-show").append(commodityData);
@@ -444,6 +456,32 @@ function isNumber(){
         }
         setTimeout("temp()", 500); // 延迟绑定事件
     }
+
+    // 删除商品
+    function c_delete(id) {
+        $.ajax({
+            url: "${path}/commodity/delete",
+            datatype: "text",
+            data: {"c_id": id},
+            success: function (value) {
+                if (value == "success") {
+                    lightyear.loading('show');
+                    setTimeout(function () {
+                        lightyear.loading('hide');
+                        lightyear.notify('商品删除成功~', 'success', 3000);
+                    }, 1e3)
+                } else {
+                    lightyear.loading('show');
+                    setTimeout(function () {
+                        lightyear.loading('hide');
+                        lightyear.notify('商品删除失败~', 'danger', 100);
+                    }, 1e3)
+                }
+            }
+        })
+        $(this).parent().parent().remove();
+    }
+
     // 点击a标签颜色变化
     $(function () {
         let commodity = $(".style-commodity");
@@ -468,6 +506,7 @@ function isNumber(){
             form1.show();
         })
     })
+
     // 监听商品上下架按钮切换事件
     function temp() {
         $(".groundingChange").on("click", function () {
